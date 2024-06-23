@@ -36,7 +36,8 @@ app.MapGet("/create-order-transaction", async (ITransactionService transactionSe
     await transactionService.PrepareServicesAsync(transactionId);
     bool result = await transactionService.CheckReadyServices(transactionId);
     if (result)
-    {
+    { 
+        //Phase 2
         await transactionService.Commit(transactionId);
         result = await transactionService.CheckTransactionStateServices(transactionId);
     }
